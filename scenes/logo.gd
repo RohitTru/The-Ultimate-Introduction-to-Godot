@@ -3,19 +3,26 @@ extends Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var i: int = 0
-	var j: int = 0
 
+	var center: Vector2 = Vector2(600, 250)  # Set the center of the circle	
+	var radius: float = 100.0  # Set the radius of the circle
+	var angle: float = 0.0  # Initialize the angle
 	while true:
-		i +=50
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.1).timeout
 
-		j +=50
-		print(i)
-		print(j)
-		position = Vector2(i,j)
-		if i > 5000:
-			break
+		# Calculate the coordinates on the circle's perimeter
+		var x = center.x + radius * cos(angle)
+		var y = center.y + radius * sin(angle)
+
+		# Update the position
+		position = Vector2(x, y)
+
+		# Increment the angle for the next point
+		angle += 0.05  # You can adjust the increment to change the speed of rotation
+
+		# Check if the angle has completed a full circle (2*pi radians)
+		if angle >= 2 * PI:
+			angle = 0.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
