@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://t7lyuqeubvm1"]
+[gd_scene load_steps=6 format=3 uid="uid://t7lyuqeubvm1"]
 
 [ext_resource type="Texture2D" uid="uid://c5m1w58t20xkg" path="res://icon.svg" id="1_qk2qh"]
+[ext_resource type="Script" path="res://scenes/logo.gd" id="2_wy8hp"]
 [ext_resource type="Texture2D" uid="uid://bno3glv80453t" path="res://graphics/car/main.png" id="2_xd82u"]
 [ext_resource type="PackedScene" uid="uid://d1hakfhxrysck" path="res://scenes/player/player.tscn" id="3_hga0h"]
+[ext_resource type="PackedScene" uid="uid://bcx5moo77hv15" path="res://scenes/Objects/bed.tscn" id="4_cm76u"]
 
 [node name="level" type="Node2D"]
 
 [node name="logo" type="Sprite2D" parent="."]
-rotation = 2.81173
 texture = ExtResource("1_qk2qh")
+script = ExtResource("2_wy8hp")
 
 [node name="carTexture" type="Sprite2D" parent="logo"]
+visible = false
 position = Vector2(-703.784, -565.454)
 texture = ExtResource("2_xd82u")
 
+[node name="bed" parent="." instance=ExtResource("4_cm76u")]
+visible = false
+position = Vector2(163, 242)
+
 [node name="Player" parent="." instance=ExtResource("3_hga0h")]
+visible = false
 position = Vector2(168, 510)
